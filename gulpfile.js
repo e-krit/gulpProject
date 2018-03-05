@@ -1,9 +1,3 @@
-# Gulp
-Снизу предоставлена сборка: данный код распологается в gulpfile.js.
-Руководство по использованию gulp - [gulp](https://webdesign-master.ru/blog/tools/2016-03-09-gulp-beginners.html )
-Файл gulpfile.js можно скачать непосретсвенно с репозитория.
-
-```sh
 'use strict';
 
 var gulp           = require('gulp'),
@@ -192,5 +186,3 @@ gulp.task('watch', function(){
 // Default
 // -------------------------------------
 gulp.task('default', ['build', 'watch']);
-
-```
