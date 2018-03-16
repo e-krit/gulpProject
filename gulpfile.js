@@ -9,18 +9,17 @@ var gulp           = require('gulp'),
 	sourcemaps     = require('gulp-sourcemaps'),
 	gulpif         = require('gulp-if'),
 	plumber        = require('gulp-plumber'),
-	browserSync    = require('browser-sync'),
 	del            = require('del');
 
 // Build Variables
 // -------------------------------------
 
 var envDev = false;
-var prefixerBrowsers = ['> 0%', 'IE >= 9', 'Firefox >= 12', 'Opera >= 12.11'];
+var prefixerBrowsers = ['> 0%', 'IE >= 10', 'Firefox >= 12', 'Opera >= 12.11'];
 var onError = function (err) {
 	gutil.beep();
 	console.log(err);
-};
+  };
 
 // Paths
 // -------------------------------------
@@ -60,12 +59,13 @@ var path = {
 //--------------------------------------
 
 gulp.task('img', function() {
-	return gulp.src('src/images/**/*.*')
-	//.pipe(imagemin())
-	.pipe(gulp.dest(path.build.img))
-	//.pipe(reload({stream: true}));
+	gulp.src(path.src.img)
+		.pipe(imagemin())
+		.pipe(plumber({
+			errorHandler: onError
+		  }))
+		.pipe(gulp.dest(path.build.img))
 });
-
 
 // Build HTML
 // -------------------------------------
